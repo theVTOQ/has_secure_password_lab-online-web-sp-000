@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   def create
     binding.pry
     User.create(user_params)
-    sessions[:user_id] = User.last.id
+    session[:user_id] = User.last.id
   end
 
   def user_params
