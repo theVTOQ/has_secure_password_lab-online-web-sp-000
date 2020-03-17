@@ -8,6 +8,8 @@ class UsersController < ApplicationController
     if user.valid?
       user.save
       session[:user_id] = user.id
+    else
+      redirect_to action: "new"
     end
   end
 
