@@ -5,11 +5,18 @@ class UsersController < ApplicationController
 
   def create
     binding.pry
-    User.create(user_params)
-    session[:user_id] = User.last.id
+    user = User.new(user_params)
+    if user.valid?
+      user.save
+      session[:user_id] = user.id
+    end
   end
 
   def user_params
     params.require(:user).permit(:name, :password, :password_confirmation)
+  end
+
+  def validate_passwords(password, confirmation)
+
   end
 end
